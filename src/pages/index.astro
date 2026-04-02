@@ -6,44 +6,267 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			:root {
+				--primary-color: #ffb6c1;
+				--secondary-color: #ff69b4;
+				--light-color: #fff0f5;
+				--dark-color: #ff1493;
+				--text-color: #333;
+			}
+			body {
+				font-family: 'Arial', sans-serif;
+				color: var(--text-color);
+				margin: 0;
+				padding: 0;
+			}
+			.hero {
+				background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
+				color: white;
+				padding: 4em 2em;
+				text-align: center;
+				position: relative;
+				overflow: hidden;
+			}
+			.hero-content {
+				position: relative;
+				z-index: 2;
+			}
+			.hero h1 {
+				font-size: 3em;
+				margin-bottom: 0.5em;
+				font-weight: bold;
+			}
+			.hero p {
+				font-size: 1.2em;
+				margin-bottom: 2em;
+				max-width: 800px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.hero-btn {
+				background: white;
+				color: var(--secondary-color);
+				padding: 1em 2em;
+				border-radius: 50px;
+				text-decoration: none;
+				font-weight: bold;
+				transition: all 0.3s ease;
+				display: inline-block;
+			}
+			.hero-btn:hover {
+				background: var(--light-color);
+				transform: translateY(-2px);
+				box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+			}
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2em;
+			}
+			.section-title {
+				text-align: center;
+				margin-bottom: 2em;
+				font-size: 2em;
+				color: var(--secondary-color);
+			}
+			.categories {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 1em;
+				margin-bottom: 3em;
+			}
+			.category-card {
+				background: white;
+				border-radius: 10px;
+				padding: 1.5em;
+				text-align: center;
+				box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+				flex: 1;
+				min-width: 200px;
+				max-width: 300px;
+				transition: transform 0.3s ease;
+			}
+			.category-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 16px rgba(255, 182, 193, 0.3);
+			}
+			.category-card h3 {
+				margin-top: 0;
+				color: var(--secondary-color);
+			}
+			.movies {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+				gap: 2em;
+				margin-bottom: 3em;
+			}
+			.movie-card {
+				background: white;
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+				transition: transform 0.3s ease;
+			}
+			.movie-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 16px rgba(255, 182, 193, 0.3);
+			}
+			.movie-poster {
+				width: 100%;
+				height: 350px;
+				object-fit: cover;
+			}
+			.movie-info {
+				padding: 1em;
+			}
+			.movie-title {
+				margin-top: 0;
+				margin-bottom: 0.5em;
+				color: var(--secondary-color);
+			}
+			.movie-price {
+				font-size: 1.2em;
+				font-weight: bold;
+				color: var(--dark-color);
+				margin-bottom: 1em;
+			}
+			.movie-btn {
+				background: var(--primary-color);
+				color: white;
+				padding: 0.5em 1em;
+				border-radius: 5px;
+				text-decoration: none;
+				font-weight: bold;
+				transition: background 0.3s ease;
+				display: inline-block;
+				width: 100%;
+				text-align: center;
+			}
+			.movie-btn:hover {
+				background: var(--secondary-color);
+			}
+			.banner {
+				background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+				color: white;
+				padding: 3em 2em;
+				text-align: center;
+				border-radius: 10px;
+				margin-bottom: 3em;
+			}
+			.banner h2 {
+				margin-top: 0;
+				margin-bottom: 1em;
+			}
+			@media (max-width: 720px) {
+				.hero h1 {
+					font-size: 2em;
+				}
+				.hero p {
+					font-size: 1em;
+				}
+				.container {
+					padding: 1em;
+				}
+				.movies {
+					grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				}
+				.movie-poster {
+					height: 300px;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<!-- Hero Section -->
+			<section class="hero">
+				<div class="hero-content">
+					<h1>Welcome to Pink Cinema</h1>
+					<p>Discover the latest movies and classics, all in one place. Shop for your favorite films with our easy-to-use platform.</p>
+					<a href="#movies" class="hero-btn">Browse Movies</a>
+				</div>
+			</section>
+
+			<!-- Categories Section -->
+			<section class="container">
+				<h2 class="section-title">Movie Categories</h2>
+				<div class="categories">
+					<div class="category-card">
+						<h3>Action</h3>
+						<p>Thrilling adventures and epic battles</p>
+					</div>
+					<div class="category-card">
+						<h3>Romance</h3>
+						<p>Heartwarming love stories</p>
+					</div>
+					<div class="category-card">
+						<h3>Comedy</h3>
+						<p>Laugh-out-loud entertainment</p>
+					</div>
+					<div class="category-card">
+						<h3>Drama</h3>
+						<p>Powerful and emotional stories</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Featured Movies Section -->
+			<section class="container" id="movies">
+				<h2 class="section-title">Featured Movies</h2>
+				<div class="movies">
+					<div class="movie-card">
+						<img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=movie%20poster%20of%20a%20romantic%20comedy%20film%20with%20pink%20theme&image_size=portrait_4_3" alt="Romantic Comedy" class="movie-poster">
+						<div class="movie-info">
+							<h3 class="movie-title">Love in Pink</h3>
+							<p>A heartwarming story about finding love in unexpected places.</p>
+							<p class="movie-price">¥29.99</p>
+							<a href="#" class="movie-btn">Add to Cart</a>
+						</div>
+					</div>
+					<div class="movie-card">
+						<img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=movie%20poster%20of%20an%20action%20film%20with%20female%20lead&image_size=portrait_4_3" alt="Action Film" class="movie-poster">
+						<div class="movie-info">
+							<h3 class="movie-title">Action Heroine</h3>
+							<p>An epic action adventure with a strong female protagonist.</p>
+							<p class="movie-price">¥39.99</p>
+							<a href="#" class="movie-btn">Add to Cart</a>
+						</div>
+					</div>
+					<div class="movie-card">
+						<img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=movie%20poster%20of%20a%20comedy%20film%20with%20friends&image_size=portrait_4_3" alt="Comedy Film" class="movie-poster">
+						<div class="movie-info">
+							<h3 class="movie-title">Best Friends Forever</h3>
+							<p>A hilarious comedy about friendship and adventures.</p>
+							<p class="movie-price">¥24.99</p>
+							<a href="#" class="movie-btn">Add to Cart</a>
+						</div>
+					</div>
+					<div class="movie-card">
+						<img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=movie%20poster%20of%20a%20drama%20film%20with%20emotional%20story&image_size=portrait_4_3" alt="Drama Film" class="movie-poster">
+						<div class="movie-info">
+							<h3 class="movie-title">Life's Journey</h3>
+							<p>A powerful drama about life, love, and overcoming obstacles.</p>
+							<p class="movie-price">¥34.99</p>
+							<a href="#" class="movie-btn">Add to Cart</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Promotion Banner -->
+			<section class="container">
+				<div class="banner">
+					<h2>Special Offer</h2>
+					<p>Buy 2 movies and get 1 free! Limited time offer.</p>
+					<a href="#" class="hero-btn">Shop Now</a>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
